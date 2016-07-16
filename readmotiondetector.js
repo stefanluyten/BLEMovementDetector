@@ -4,7 +4,7 @@ var async = require('async');
 // PUBNUB
 var pubnub = require("pubnub")({
     ssl           : true,  // <- enable TLS Tunneling over TCP
-    publish_key   : "pub-c-34f43669-27d6-4263-a29c-0d18c07ca0e2",
+    publish_key   : "xxx",
     subscribe_key : "sub-c-c5948442-3e27-11e6-8b3b-02ee2ddab7fe"
 });
 
@@ -18,7 +18,6 @@ var message = "";
 var nobleState;
 
 go(0);
-
 
 function go(i){
 
@@ -67,7 +66,8 @@ noble.on('discover', function(peripheral) {
     		peripheral.once('disconnect', function() {
     			console.log("Disconnected");
     			//noble.stopScanning();
-    			go(1);
+    			//go(1); // This was to be able to restart the BL scanning process but is not funcitoning properly yet.
+
   			});
     		//peripheral.discoverAllServicesAndCharacteristics(function(error, services, characteristics){
     		var serviceUUIDs = ["180d"];
